@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/pjanuario/logger-facade-nodejs.svg?branch=master)](https://travis-ci.org/pjanuario/logger-facade-nodejs)
-[![Code Climate](https://codeclimate.com/github/pjanuario/node-travis-ci-sandbox.png)](https://codeclimate.com/github/pjanuario/logger-facade-nodejs)
+[![Code Climate](https://codeclimate.com/github/pjanuario/logger-facade-nodejs.png)](https://codeclimate.com/github/pjanuario/logger-facade-nodejs)
 [![Coverage](http://img.shields.io/codeclimate/coverage/github/pjanuario/logger-facade-nodejs.svg)](https://codeclimate.com/github/pjanuario/logger-facade-nodejs)
 [![Dependency Status](https://gemnasium.com/pjanuario/logger-facade-nodejs.svg)](https://gemnasium.com/pjanuario/logger-facade-nodejs)
 ![Grunt](https://cdn.gruntjs.com/builtwith.png)
