@@ -48,7 +48,7 @@ var plugin = {
 
 Logger.use(plugin);
 
-var log = new Logger("Log Name");
+var log = Logger.getLogger("Log Name");
 
 log.debug("something to log");
 

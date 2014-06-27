@@ -21,6 +21,12 @@ describe('Logger', function() {
     Logger.clearPlugins();
   });
 
+  describe('.getLogger', function(){
+    it('returns a logger instance', function(){
+      expect(Logger.getLogger(null)).not.toBeNull();
+    });
+  });
+
   describe('.use', function() {
 
     it('register a plugin', function(done){
@@ -33,7 +39,7 @@ describe('Logger', function() {
 
       Logger.use(plugin);
 
-      var log = new Logger('test logger');
+      var log = Logger.getLogger('test logger');
       log.debug("message","other param");
     });
 
@@ -87,7 +93,7 @@ describe('Logger', function() {
         Logger.use(otherPlugin);
         Logger.use(plugin);
 
-        var log = new Logger();
+        var log = Logger.getLogger();
         expect(log.isDebug()).toEqual(true);
       });
 
@@ -109,7 +115,7 @@ describe('Logger', function() {
         Logger.use(otherPlugin);
         Logger.use(plugin);
 
-        var log = new Logger();
+        var log = Logger.getLogger();
         expect(log.isDebug()).toEqual(false);
       });
 
@@ -118,7 +124,7 @@ describe('Logger', function() {
     describe('when does not exists plugins', function(){
 
       it('returns false', function(){
-        var log = new Logger();
+        var log = Logger.getLogger();
         expect(log.isDebug()).toEqual(false);
       });
 
@@ -139,7 +145,7 @@ describe('Logger', function() {
 
       Logger.use(plugin);
 
-      var log = new Logger('test logger');
+      var log = Logger.getLogger('test logger');
       log.trace("message","other param");
     });
 
@@ -158,7 +164,7 @@ describe('Logger', function() {
 
       Logger.use(plugin);
 
-      var log = new Logger('test logger');
+      var log = Logger.getLogger('test logger');
       log.debug("message","other param");
     });
 
@@ -177,7 +183,7 @@ describe('Logger', function() {
 
       Logger.use(plugin);
 
-      var log = new Logger('test logger');
+      var log = Logger.getLogger('test logger');
       log.info("message","other param");
     });
 
@@ -196,7 +202,7 @@ describe('Logger', function() {
 
       Logger.use(plugin);
 
-      var log = new Logger('test logger');
+      var log = Logger.getLogger('test logger');
       log.warn("message","other param");
     });
 
@@ -215,7 +221,7 @@ describe('Logger', function() {
 
       Logger.use(plugin);
 
-      var log = new Logger('test logger');
+      var log = Logger.getLogger('test logger');
       log.error("message","other param");
     });
 

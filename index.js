@@ -2,7 +2,7 @@
 
   var plugins = [];
 
-  var Logger = function(name){
+  var LoggerInstance = function(name){
 
     this.isDebug = function(){
 
@@ -64,6 +64,12 @@
     isValid = isValid && (plugin.error instanceof Function);
 
     return isValid;
+  };
+
+  var Logger = { };
+
+  Logger.getLogger = function(name){
+    return new LoggerInstance(name);
   };
 
   Logger.use = function(plugin) {
