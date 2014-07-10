@@ -9,9 +9,34 @@ Logger Facade Nodejs
 
 Simple node module to work as logger facade.
 
-This simple logger facade allows pluggin hook to execute different logging.
+This simple logger facade allows you to hook plugins to execute async logging.
 
-The plugin must follow this contract:
+The logger facade contract:
+```javascript
+// register a plugin on logger
+Logger.use(plugin);
+// retrieve the list of plugin names
+Logger.plugins();
+// clean  up the list of plugins
+Logger.clearPlugins();
+// retrieve a logger with the specified name
+var log = Logger.getLogger("Log Name");
+```
+
+The logger contract is:
+```javascript
+log.isDebug(); // return if in debug or trace level
+log.trace("trace %s", "something");
+log.debug("debug %s", "something"),
+log.info("info");
+log.warn();
+log.error();
+```
+
+The logger uses util.format to build log message.
+
+
+The plugins must follow this contract:
 ```javascript
 plugin = {
   name: 'mock',
@@ -55,6 +80,14 @@ log.debug("something to log");
 log.info("something to log in %s", 'info');
 ```
 
+## Available plugins
+* [Console](https://www.npmjs.org/package/logger-facade-console-plugin-nodejs)
+* Airbrake (Will be developed soon)
+* Elasticsearch (Will be developed soon)
+
+** Do you need some other plugin?**
+
+Feel free to create one and get in touch with me, that i will add it to this list.
 
 # Contributing
 Bug fixes and new features are of course very welcome!
