@@ -90,6 +90,34 @@ log.info("something to log in %s", 'info');
 
 Feel free to create one and get in touch with me, that i will add it to this list.
 
+## Using peer dependency
+
+This module work as singleton, if you need to distribute a library that uses it due
+to [npm Module Cache Caveats](http://nodejs.org/api/modules.html#modules_module_caching_caveats)
+you need to add it as [peer dependency](http://blog.nodejs.org/2013/02/07/peer-dependencies/).
+
+**Example:**
+
+```json
+// The App module
+{
+  "name": "app",
+  "version": "0.0.1",
+  "dependencies": {
+    "logger-facade-nodejs": "0.0.1",
+    "framework": "0.0.1"
+  }
+}
+// The framework module
+{
+  "name": "framework",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "logger-facade-nodejs": "0.0.1",
+  }
+}
+```
+
 # Contributing
 Bug fixes and new features are of course very welcome!
 
