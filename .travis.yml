@@ -9,9 +9,9 @@ branches:
     - master
 script:
   - npm test
-# after_success:
-#   - codeclimate < ./coverage/lcov.info
-# addons:
-#   code_climate:
-#     repo_token:
-#       secure:
+after_success:
+  - codeclimate < ./coverage/lcov.info
+addons:
+  code_climate:
+    repo_token:
+      secure: TscwiL5mOWwodwY9mYSH8vyqtLbuKSFTEsdR9fCXwOZTAgXOJyTPh2aqlMmYvtYA4xz0nQhdWPYxHw3UIBHNzdmmLK6LclVvBMahXmWZainv5cc2Vf13qN68TF0RZ/QOBTb0V0d10gXm/0lH9jgHmBV6OdSHx7WimcY6KBKNDjs=
