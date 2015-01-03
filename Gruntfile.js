@@ -74,6 +74,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-jasmine-node-coverage-validation');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-bump');
 
   var instrumentationFilePath = './instrumentation_spec.js';
   var fs = require('fs');
