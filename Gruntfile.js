@@ -45,7 +45,8 @@ module.exports = function(grunt) {
           waitsFor: false,
           runs: false,
           exports: false,
-          process: false
+          process: false,
+          setImmediate: false
         }
       }
     },

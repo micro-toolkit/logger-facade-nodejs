@@ -27,7 +27,8 @@
           plugin[level].apply(plugin, args);
         };
 
-        process.nextTick(compute);
+        // using execution deferral
+        setImmediate(compute);
       });
     };
 
