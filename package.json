@@ -28,7 +28,6 @@
     "grunt-bump": "0.0.16",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-jasmine-node-coverage-validation": "0.0.4",
-    "jasmine-reporters": "~0.4"
+    "grunt-jasmine-node-coverage-validation": "0.0.4"
   }
 }
