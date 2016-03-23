@@ -15,9 +15,18 @@
       return debug;
     };
 
+    var isString = function (val) {
+      return (typeof val === 'string' || val instanceof String);
+    };
+
     var log = function(data, level){
 
       var args = Array.prototype.slice.call(data);
+
+      // handles call with no metadata
+      if (args.length > 0 && isString(args[0])) {
+        args.unshift(null);
+      }
       // add logger name
       args.unshift(name);
 

@@ -30,8 +30,9 @@ describe('Logger', function() {
   describe('.use', function() {
 
     it('register a plugin', function(done){
-      plugin.debug = function(logger, message, otherArg) {
+      plugin.debug = function(logger, metadata, message, otherArg) {
         expect(logger).toEqual('test logger');
+        expect(metadata).toBeNull();
         expect(message).toEqual("message");
         expect(otherArg).toEqual("other param");
         done();
@@ -136,8 +137,9 @@ describe('Logger', function() {
 
     it('calls plugin in trace level', function(done){
 
-      plugin.trace = function(logger, message, otherArg) {
+      plugin.trace = function(logger, metadata, message, otherArg) {
         expect(logger).toEqual('test logger');
+        expect(metadata).toBeNull();
         expect(message).toEqual("message");
         expect(otherArg).toEqual("other param");
         done();
@@ -155,8 +157,9 @@ describe('Logger', function() {
 
     it('calls plugin in debug level', function(done){
 
-      plugin.debug = function(logger, message, otherArg) {
+      plugin.debug = function(logger, metadata, message, otherArg) {
         expect(logger).toEqual('test logger');
+        expect(metadata).toBeNull();
         expect(message).toEqual("message");
         expect(otherArg).toEqual("other param");
         done();
@@ -174,8 +177,9 @@ describe('Logger', function() {
 
     it('calls plugin in info level', function(done){
 
-      plugin.info = function(logger, message, otherArg) {
+      plugin.info = function(logger, metadata, message, otherArg) {
         expect(logger).toEqual('test logger');
+        expect(metadata).toBeNull();
         expect(message).toEqual("message");
         expect(otherArg).toEqual("other param");
         done();
@@ -193,8 +197,9 @@ describe('Logger', function() {
 
     it('calls plugin in warn level', function(done){
 
-      plugin.warn = function(logger, message, otherArg) {
+      plugin.warn = function(logger, metadata, message, otherArg) {
         expect(logger).toEqual('test logger');
+        expect(metadata).toBeNull();
         expect(message).toEqual("message");
         expect(otherArg).toEqual("other param");
         done();
@@ -212,8 +217,9 @@ describe('Logger', function() {
 
     it('calls plugin in error level', function(done){
 
-      plugin.error = function(logger, message, otherArg) {
+      plugin.error = function(logger, metadata, message, otherArg) {
         expect(logger).toEqual('test logger');
+        expect(metadata).toBeNull();
         expect(message).toEqual("message");
         expect(otherArg).toEqual("other param");
         done();
@@ -223,6 +229,21 @@ describe('Logger', function() {
 
       var log = Logger.getLogger('test logger');
       log.error("message","other param");
+    });
+
+    it('calls plugin with metadata in error level', function(done){
+      plugin.error = function(logger, metadata, message, otherArg) {
+        expect(logger).toEqual('test logger');
+        expect(metadata).toEqual({header: 'metadata'});
+        expect(message).toEqual("message");
+        expect(otherArg).toEqual("other param");
+        done();
+      };
+
+      Logger.use(plugin);
+
+      var log = Logger.getLogger('test logger');
+      log.error({header: 'metadata'}, "message","other param");
     });
 
   });
