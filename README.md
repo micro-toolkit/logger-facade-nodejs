@@ -27,11 +27,16 @@ var log = Logger.getLogger("Log Name");
 The logger contract is:
 ```javascript
 log.isDebug(); // return if in debug or trace level
-log.trace("trace %s", "something");
-log.debug("debug %s", "something"),
-log.info("info");
-log.warn();
-log.error();
+log.trace("Message to log %s and should be hidden due to log level", 'with args');
+log.trace({someinfo: true}, "Message to log %s and should be hidden due to log level", 'with args');
+log.debug("Message to log %s", 'with args');
+log.debug({someinfo: true}, "Message to log %s", 'with args');
+log.info("Message to log %s", 'with args');
+log.info({someinfo: true}, "Message to log %s", 'with args');
+log.warn("Message to log %s", 'with args');
+log.warn({someinfo: true}, "Message to log %s", 'with args');
+log.error("Message to log %s", 'with args');
+log.error({someinfo: true}, "Message to log %s", 'with args');
 ```
 
 The logger uses util.format to build log message.
