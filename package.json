@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pjanuario/logger-facade-nodejs.git"
+    "url": "https://github.com/micro-toolkit/logger-facade-nodejs.git"
   },
   "keywords": [
     "log",
@@ -18,9 +18,9 @@
   "author": "Pedro Januário",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pjanuario/logger-facade-nodejs/issues"
+    "url": "https://github.com/micro-toolkit/logger-facade-nodejs/issues"
   },
-  "homepage": "https://github.com/pjanuario/logger-facade-nodejs",
+  "homepage": "https://github.com/micro-toolkit/logger-facade-nodejs",
   "devDependencies": {
     "codeclimate-test-reporter": "0.3.1",
     "fs-tools": "^0.2.11",
