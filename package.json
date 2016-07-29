@@ -29,5 +29,8 @@
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-jasmine-node-coverage-validation": "0.0.4"
+  },
+  "dependencies": {
+    "lodash": "^4.14.0"
   }
 }

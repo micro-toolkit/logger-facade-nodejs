@@ -246,6 +246,19 @@ describe('Logger', function() {
       log.error({header: 'metadata'}, "message","other param");
     });
 
+    it('calls plugin with metadata clone', function(done){
+      var data = {header: 'metadata'};
+      plugin.error = function(logger, metadata, message, otherArg) {
+        expect(metadata).not.toBe(data);
+        done();
+      };
+
+      Logger.use(plugin);
+
+      var log = Logger.getLogger('test logger');
+      log.error(data, "message","other param");
+    });
+
   });
 
 });
