@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 (function() {
 
   var plugins = [];
@@ -26,7 +28,12 @@
       // handles call with no metadata
       if (args.length > 0 && isString(args[0])) {
         args.unshift(null);
+      } else {
+        // ensure the metadata that is logged is the one passed in the call
+        // otherwise since log might be deffered the data migth be different already.
+        args[0] = _.cloneDeep(args[0]);
       }
+
       // add logger name
       args.unshift(name);
 
