@@ -1,6 +1,6 @@
 {
   "name": "logger-facade-nodejs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Logger facade for nodejs applications",
   "main": "index.js",
   "scripts": {
