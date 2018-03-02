@@ -1,6 +1,7 @@
 describe('Logger', function() {
 
   var Logger = require('../index');
+  var moment = require('moment');
 
   var plugin;
 
@@ -15,6 +16,9 @@ describe('Logger', function() {
       warn: Function.apply(),
       error: Function.apply()
     };
+    spyOn(moment, 'utc').andCallFake(function(){
+      return moment("20140627 01:02:03.001", "YYYYMMDD HH:mm:ss.SSS");
+    });
   });
 
   afterEach(function(){
@@ -30,7 +34,8 @@ describe('Logger', function() {
   describe('.use', function() {
 
     it('register a plugin', function(done){
-      plugin.debug = function(logger, metadata, message, otherArg) {
+      plugin.debug = function(ts, logger, metadata, message, otherArg) {
+        expect(ts).toEqual('2014-06-27T00:02:03.001Z');
         expect(logger).toEqual('test logger');
         expect(metadata).toBeNull();
         expect(message).toEqual("message");
@@ -137,7 +142,8 @@ describe('Logger', function() {
 
     it('calls plugin in trace level', function(done){
 
-      plugin.trace = function(logger, metadata, message, otherArg) {
+      plugin.trace = function(ts, logger, metadata, message, otherArg) {
+        expect(ts).toEqual('2014-06-27T00:02:03.001Z');
         expect(logger).toEqual('test logger');
         expect(metadata).toBeNull();
         expect(message).toEqual("message");
@@ -157,7 +163,8 @@ describe('Logger', function() {
 
     it('calls plugin in debug level', function(done){
 
-      plugin.debug = function(logger, metadata, message, otherArg) {
+      plugin.debug = function(ts, logger, metadata, message, otherArg) {
+        expect(ts).toEqual('2014-06-27T00:02:03.001Z');
         expect(logger).toEqual('test logger');
         expect(metadata).toBeNull();
         expect(message).toEqual("message");
@@ -177,7 +184,8 @@ describe('Logger', function() {
 
     it('calls plugin in info level', function(done){
 
-      plugin.info = function(logger, metadata, message, otherArg) {
+      plugin.info = function(ts, logger, metadata, message, otherArg) {
+        expect(ts).toEqual('2014-06-27T00:02:03.001Z');
         expect(logger).toEqual('test logger');
         expect(metadata).toBeNull();
         expect(message).toEqual("message");
@@ -197,7 +205,8 @@ describe('Logger', function() {
 
     it('calls plugin in warn level', function(done){
 
-      plugin.warn = function(logger, metadata, message, otherArg) {
+      plugin.warn = function(ts, logger, metadata, message, otherArg) {
+        expect(ts).toEqual('2014-06-27T00:02:03.001Z');
         expect(logger).toEqual('test logger');
         expect(metadata).toBeNull();
         expect(message).toEqual("message");
@@ -217,7 +226,8 @@ describe('Logger', function() {
 
     it('calls plugin in error level', function(done){
 
-      plugin.error = function(logger, metadata, message, otherArg) {
+      plugin.error = function(ts, logger, metadata, message, otherArg) {
+        expect(ts).toEqual('2014-06-27T00:02:03.001Z');
         expect(logger).toEqual('test logger');
         expect(metadata).toBeNull();
         expect(message).toEqual("message");
@@ -232,7 +242,8 @@ describe('Logger', function() {
     });
 
     it('calls plugin with metadata in error level', function(done){
-      plugin.error = function(logger, metadata, message, otherArg) {
+      plugin.error = function(ts, logger, metadata, message, otherArg) {
+        expect(ts).toEqual('2014-06-27T00:02:03.001Z');
         expect(logger).toEqual('test logger');
         expect(metadata).toEqual({header: 'metadata'});
         expect(message).toEqual("message");
