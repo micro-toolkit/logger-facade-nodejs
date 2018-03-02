@@ -1,4 +1,5 @@
 var _ = require('lodash');
+var moment = require('moment');
 
 (function() {
 
@@ -36,6 +37,10 @@ var _ = require('lodash');
 
       // add logger name
       args.unshift(name);
+
+      // add timestamp of the log entry
+      // since logging is deffered we need to collect the timestamp
+      args.unshift(moment.utc().toISOString());
 
       plugins.forEach(function(plugin) {
 
